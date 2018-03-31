@@ -24,12 +24,14 @@
             <ListView prefHeight="200.0" prefWidth="200.0" fx:id="accountList" />
                 <HBox alignment="CENTER_RIGHT">
                     <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" text="Zur Registrierung">
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Zur Registrierung"
+                                onAction="#handleRegisterButtonClicked">
                             <HBox.margin>
                                 <Insets right="10.0" top="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" text="Login">
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Login"
+                                onAction="#handleLoginButtonClicked">
                             <HBox.margin>
                                 <Insets top="10.0" />
                             </HBox.margin>

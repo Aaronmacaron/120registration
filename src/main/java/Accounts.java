@@ -1,3 +1,4 @@
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 
@@ -9,6 +10,16 @@ public class Accounts implements RegistrationController {
     @Override
     public void loaded() {
         accountList.setItems(registration.getAccounts());
+    }
+
+    @FXML
+    public void handleRegisterButtonClicked(ActionEvent actionEvent) {
+        registration.getPrimaryStage().setScene(registration.getRegisterScene());
+    }
+
+    @FXML
+    public void handleLoginButtonClicked(ActionEvent actionEvent) {
+        registration.getPrimaryStage().setScene(registration.getLoginScene());
     }
 
     @Override
