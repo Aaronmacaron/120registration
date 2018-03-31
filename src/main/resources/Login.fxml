@@ -24,27 +24,33 @@
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Label>
+                <Label fx:id="errorMessage" textFill="#c34444">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
                 <Label text="Benutzername">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Label>
-                <TextField/>
+                <TextField fx:id="username"/>
                 <Label text="Password">
                     <VBox.margin>
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Label>
-                <PasswordField/>
+                <PasswordField fx:id="password"/>
                 <HBox alignment="CENTER_RIGHT">
                     <children>
                         <Button alignment="CENTER" mnemonicParsing="false" text="Zur Registrierung"
-                                onAction="#handleLoginButtonClick">
+                                onAction="#handleRegisterButtonClicked">
                             <HBox.margin>
                                 <Insets right="10.0" top="10.0"/>
                             </HBox.margin>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" text="Login">
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Login"
+                            onAction="#handleLoginButtonClicked">
                             <HBox.margin>
                                 <Insets top="10.0"/>
                             </HBox.margin>
