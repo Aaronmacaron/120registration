@@ -49,7 +49,7 @@ public class Registration extends Application {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            throw new RuntimeException("FATAL ERROR!");
+            throw new RuntimeException("Unrecoverable error occurred while loading scene.");
         });
     }
 
