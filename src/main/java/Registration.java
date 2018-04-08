@@ -15,6 +15,7 @@ public class Registration extends Application {
     private Map<Class, Scene> sceneCache = new HashMap<>();
     private Stage primaryStage;
     private ObservableList<Account> accounts = FXCollections.observableArrayList();
+    private int activeAccountIndex;
 
     @Override
     public void start(Stage primaryStage) {
@@ -34,6 +35,10 @@ public class Registration extends Application {
 
     public Scene getAccountsScene() {
         return getScene(Accounts.class);
+    }
+
+    public Scene getAccountDetailsScene() {
+        return getScene(AccountDetails.class);
     }
 
     public Scene getScene(Class clazz) {
@@ -59,5 +64,13 @@ public class Registration extends Application {
 
     public ObservableList<Account> getAccounts() {
         return accounts;
+    }
+
+    public int getActiveAccountIndex() {
+        return activeAccountIndex;
+    }
+
+    public void setActiveAccountIndex(int activeAccountIndex) {
+        this.activeAccountIndex = activeAccountIndex;
     }
 }

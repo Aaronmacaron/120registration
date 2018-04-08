@@ -21,7 +21,7 @@
                         <Insets top="10.0" />
                     </VBox.margin>
                 </Label>
-            <ListView prefHeight="200.0" prefWidth="200.0" fx:id="accountList" />
+            <ListView prefHeight="200.0" prefWidth="200.0" fx:id="accountList" onMouseClicked="#handleOnListClicked" />
                 <HBox alignment="CENTER_RIGHT">
                     <children>
                         <Button alignment="CENTER" mnemonicParsing="false" text="Zur Registrierung"

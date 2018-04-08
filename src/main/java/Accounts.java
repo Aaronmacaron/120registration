@@ -1,6 +1,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
 
 public class Accounts implements RegistrationController {
     private Registration registration;
@@ -25,5 +26,11 @@ public class Accounts implements RegistrationController {
     @Override
     public void setRegistration(Registration registration) {
         this.registration = registration;
+    }
+
+    public void handleOnListClicked(MouseEvent mouseEvent) {
+        Account selectedAccount = accountList.getSelectionModel().getSelectedItem();
+        registration.setActiveAccountIndex(registration.getAccounts().indexOf(selectedAccount));
+        registration.getPrimaryStage().setScene(registration.getAccountDetailsScene());
     }
 }
