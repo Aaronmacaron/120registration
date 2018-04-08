@@ -1,3 +1,4 @@
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -133,10 +134,10 @@ public class Register implements RegistrationController {
     private Account getAccountFromForm() {
         String passwordHash = BCrypt.hashpw(password.getText(), BCrypt.gensalt());
         return new Account(
-                username.getText(),
-                email.getText(),
-                birthday.getValue(),
-                passwordHash
+                username.textProperty(),
+                email.textProperty(),
+                birthday.valueProperty(),
+                new SimpleStringProperty(passwordHash)
         );
     }
 }
