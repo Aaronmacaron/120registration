@@ -24,7 +24,7 @@ public class Login implements RegistrationController {
 
     @Override
     public void activated() {
-
+        emptyForm();
     }
 
     @FXML
@@ -55,5 +55,11 @@ public class Login implements RegistrationController {
         }
 
         return Reaction.failure("The username or password is not correct.");
+    }
+
+    private void emptyForm() {
+        username.setText("");
+        password.setText("");
+        errorMessage.setText("");
     }
 }

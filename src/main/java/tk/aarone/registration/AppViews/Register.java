@@ -34,7 +34,7 @@ public class Register implements RegistrationController {
 
     @Override
     public void activated() {
-
+        emptyForm();
     }
 
     @FXML
@@ -147,5 +147,13 @@ public class Register implements RegistrationController {
                 birthday.getValue(),
                 passwordHash
         );
+    }
+
+    private void emptyForm() {
+        username.setText("");
+        email.setText("");
+        birthday.setValue(null);
+        password.setText("");
+        repeatPassword.setText("");
     }
 }
