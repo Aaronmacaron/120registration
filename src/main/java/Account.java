@@ -1,18 +1,15 @@
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.value.ObservableObjectValue;
-import javafx.beans.value.ObservableStringValue;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.time.LocalDate;
 
 public class Account {
-    private ObservableStringValue username;
-    private ObservableStringValue email;
-    private ObjectProperty<LocalDate> birthday;
-    private ObservableStringValue passwordHash;
+    private String username;
+    private String email;
+    private LocalDate birthday;
+    private String passwordHash;
 
-    public Account(ObservableStringValue username, ObservableStringValue email, ObjectProperty<LocalDate> birthday,
-                   ObservableStringValue passwordHash) {
+    public Account(String username, String email, LocalDate birthday,
+                   String passwordHash) {
         this.username = username;
         this.email = email;
         this.birthday = birthday;
@@ -20,47 +17,31 @@ public class Account {
     }
 
     public Reaction authenticate(String password) {
-        if (BCrypt.checkpw(password, this.passwordHash.getValue())) {
+        if (BCrypt.checkpw(password, this.passwordHash)) {
             return Reaction.success();
         }
 
         return Reaction.failure();
     }
 
-    public ObservableStringValue getObservableUsername() {
+    public String getUsername() {
         return username;
     }
 
-    public ObservableStringValue getObservableEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public ObservableObjectValue<LocalDate> getObservableBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public ObservableStringValue getObservablePasswordHash() {
-        return passwordHash;
-    }
-
-    public String getUsername() {
-        return username.getValue();
-    }
-
-    public String getEmail() {
-        return email.getValue();
-    }
-
-    public LocalDate getBirthday() {
-        return birthday.getValue();
-    }
-
     public String getPasswordHash() {
-        return passwordHash.getValue();
+        return passwordHash;
     }
 
     @Override
     public String toString() {
-        return this.username.getValue() + " (" + this.email.getValue() + ")";
+        return this.username + " (" + this.email + ")";
     }
 }

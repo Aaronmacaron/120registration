@@ -16,15 +16,20 @@ public class Login implements RegistrationController {
 
     }
 
+    @Override
+    public void activated() {
+
+    }
+
     @FXML
     public void handleRegisterButtonClicked(ActionEvent actionEvent) {
-        registration.getPrimaryStage().setScene(registration.getRegisterScene());
+        registration.setAppView(AppView.getByController(Register.class));
     }
 
     @FXML
     public void handleLoginButtonClicked(ActionEvent actionEvent) {
         authenticateUser()
-                .succeed(reaction -> registration.getPrimaryStage().setScene(registration.getAccountsScene()))
+                .succeed(reaction -> registration.setAppView(AppView.getByController(Accounts.class)))
                 .fail(reaction -> errorMessage.setText(reaction.getMessage()));
     }
 

@@ -1,4 +1,3 @@
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -29,18 +28,23 @@ public class Register implements RegistrationController {
         birthday.prefWidthProperty().bind(formContainer.prefWidthProperty());
     }
 
+    @Override
+    public void activated() {
+
+    }
+
     @FXML
     public void handleSendButtonClick(ActionEvent actionEvent) {
         validate().succeed(reaction -> {
             registration.getAccounts().add(getAccountFromForm());
-            registration.getPrimaryStage().setScene(registration.getAccountsScene());
+            registration.setAppView(AppView.getByController(Accounts.class));
         }).fail(reaction -> errorMessage.setText(reaction.getMessage()))
                 .resolve(reaction -> errorMessage.setText(reaction.getMessage()));
     }
 
     @FXML
     public void handleLoginButtonClick(ActionEvent actionEvent) {
-        registration.getPrimaryStage().setScene(registration.getLoginScene());
+        registration.setAppView(AppView.getByController(Login.class));
     }
 
     public void setRegistration(Registration registration) {
@@ -134,10 +138,10 @@ public class Register implements RegistrationController {
     private Account getAccountFromForm() {
         String passwordHash = BCrypt.hashpw(password.getText(), BCrypt.gensalt());
         return new Account(
-                username.textProperty(),
-                email.textProperty(),
-                birthday.valueProperty(),
-                new SimpleStringProperty(passwordHash)
+                username.getText(),
+                email.getText(),
+                birthday.getValue(),
+                passwordHash
         );
     }
 }

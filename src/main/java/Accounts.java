@@ -13,14 +13,19 @@ public class Accounts implements RegistrationController {
         accountList.setItems(registration.getAccounts());
     }
 
+    @Override
+    public void activated() {
+
+    }
+
     @FXML
     public void handleRegisterButtonClicked(ActionEvent actionEvent) {
-        registration.getPrimaryStage().setScene(registration.getRegisterScene());
+        registration.setAppView(AppView.getByController(Register.class));
     }
 
     @FXML
     public void handleLoginButtonClicked(ActionEvent actionEvent) {
-        registration.getPrimaryStage().setScene(registration.getLoginScene());
+        registration.setAppView(AppView.getByController(Login.class));
     }
 
     @Override
@@ -31,6 +36,6 @@ public class Accounts implements RegistrationController {
     public void handleOnListClicked(MouseEvent mouseEvent) {
         Account selectedAccount = accountList.getSelectionModel().getSelectedItem();
         registration.setActiveAccountIndex(registration.getAccounts().indexOf(selectedAccount));
-        registration.getPrimaryStage().setScene(registration.getAccountDetailsScene());
+        registration.setAppView(AppView.getByController(AccountDetails.class));
     }
 }

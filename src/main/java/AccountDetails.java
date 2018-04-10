@@ -19,13 +19,18 @@ public class AccountDetails implements RegistrationController {
     @Override
     public void loaded() {
         Account activeAccount = registration.getAccounts().get(registration.getActiveAccountIndex());
-        username.textProperty().bind(activeAccount.getObservableUsername());
-        email.textProperty().bind(activeAccount.getObservableEmail());
-        password.textProperty().bind(activeAccount.getObservablePasswordHash());
-        birthday.valueProperty().bind(activeAccount.getObservableBirthday());
+        username.setText(activeAccount.getUsername());
+        email.setText(activeAccount.getEmail());
+        password.setText("******"); // Set hardcoded string since the actual password is hashed
+        birthday.setValue(activeAccount.getBirthday());
 
         // Set Width of Date Picker to be equally wide as its parent and thus equally wide as the other fields
         birthday.prefWidthProperty().bind(formContainer.prefWidthProperty());
+    }
+
+    @Override
+    public void activated() {
+
     }
 
     @Override
@@ -43,7 +48,6 @@ public class AccountDetails implements RegistrationController {
     }
 
     private void goBackToAccountsScene() {
-        registration.getPrimaryStage().setScene(registration.getAccountsScene());
-
+        registration.setAppView(AppView.getByController(Accounts.class));
     }
 }
