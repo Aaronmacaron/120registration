@@ -1,7 +1,10 @@
+package tk.aarone.registration;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.stage.Stage;
+import tk.aarone.registration.AppViews.Register;
 
 public class Registration extends Application {
 
@@ -15,7 +18,7 @@ public class Registration extends Application {
     public void start(Stage primaryStage) {
         registrationSingleton = this;
         this.primaryStage = primaryStage;
-        primaryStage.setTitle(getClass().getName());
+        primaryStage.setTitle(getClass().getSimpleName());
         setAppView(AppView.getByController(Register.class));
         primaryStage.show();
     }

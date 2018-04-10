@@ -1,4 +1,7 @@
+package tk.aarone.registration;
+
 import org.mindrot.jbcrypt.BCrypt;
+import tk.aarone.registration.Reaction.Reaction;
 
 import java.time.LocalDate;
 

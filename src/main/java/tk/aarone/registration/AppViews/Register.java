@@ -1,3 +1,5 @@
+package tk.aarone.registration.AppViews;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
@@ -6,6 +8,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import org.mindrot.jbcrypt.BCrypt;
+import tk.aarone.registration.*;
+import tk.aarone.registration.Reaction.Reaction;
 
 import java.time.LocalDate;
 import java.util.regex.Pattern;

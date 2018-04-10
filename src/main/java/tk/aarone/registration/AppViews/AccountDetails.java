@@ -1,9 +1,15 @@
+package tk.aarone.registration.AppViews;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import tk.aarone.registration.Account;
+import tk.aarone.registration.AppView;
+import tk.aarone.registration.Registration;
+import tk.aarone.registration.RegistrationController;
 
 public class AccountDetails implements RegistrationController {
 

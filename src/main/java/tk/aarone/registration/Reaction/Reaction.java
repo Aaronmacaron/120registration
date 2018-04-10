@@ -1,3 +1,5 @@
+package tk.aarone.registration.Reaction;
+
 public class Reaction {
     private ReactionType reactionType;
     private String message;

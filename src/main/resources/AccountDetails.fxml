@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.DatePicker?>
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccountDetails">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tk.aarone.registration.AppViews.AccountDetails">
     <children>
         <VBox fx:id="formContainer" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="0.0">
             <children>

@@ -1,3 +1,5 @@
+package tk.aarone.registration;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,7 +21,7 @@ public class AppView {
 
     public static AppView getByController(Class<? extends RegistrationController> clazz) {
         return appViewCache.computeIfAbsent(clazz, cl -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(AppView.class.getResource(cl.getName() + ".fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(ClassLoader.getSystemResource(cl.getSimpleName() + ".fxml"));
             Parent parent;
             try {
                 parent = fxmlLoader.load();

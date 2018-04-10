@@ -1,8 +1,14 @@
+package tk.aarone.registration.AppViews;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import tk.aarone.registration.AppView;
+import tk.aarone.registration.Reaction.Reaction;
+import tk.aarone.registration.Registration;
+import tk.aarone.registration.RegistrationController;
 
 public class Login implements RegistrationController {
     private Registration registration;

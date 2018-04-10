@@ -1,3 +1,5 @@
+package tk.aarone.registration;
+
 import javafx.application.Application;
 
 public class Main {
