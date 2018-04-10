@@ -63,6 +63,12 @@
                         <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleBackButtonClicked"
                                 text="Zurück">
                             <HBox.margin>
+                                <Insets right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handleSaveButtonClicked"
+                                text="Speichern">
+                            <HBox.margin>
                                 <Insets top="10.0" />
                             </HBox.margin>
                         </Button>
