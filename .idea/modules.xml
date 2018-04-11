@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/120registration.iml" filepath="$PROJECT_DIR$/.idea/modules/120registration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/120registration_main.iml" filepath="$PROJECT_DIR$/.idea/modules/120registration_main.iml" group="120registration" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/120registration_test.iml" filepath="$PROJECT_DIR$/.idea/modules/120registration_test.iml" group="120registration" />
+    </modules>
+  </component>
+</project>
