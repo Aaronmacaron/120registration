@@ -145,7 +145,8 @@ public class Register implements RegistrationController {
                 username.getText(),
                 email.getText(),
                 birthday.getValue(),
-                passwordHash
+                passwordHash,
+                false
         );
     }
 

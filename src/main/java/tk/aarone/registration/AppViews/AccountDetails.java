@@ -2,6 +2,7 @@ package tk.aarone.registration.AppViews;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -25,6 +26,7 @@ public class AccountDetails implements RegistrationController {
     @FXML private TextField email;
     @FXML private DatePicker birthday;
     @FXML private TextField password;
+    @FXML private CheckBox hidden;
 
     @Override
     public void loaded() {
@@ -39,6 +41,7 @@ public class AccountDetails implements RegistrationController {
         email.setText(activeAccount.getEmail());
         password.setText(PASSWORD_PLACEHOLDER); // Set hardcoded string since the actual password is hashed
         birthday.setValue(activeAccount.getBirthday());
+        hidden.setSelected(activeAccount.isHidden());
     }
 
     @Override
@@ -68,7 +71,8 @@ public class AccountDetails implements RegistrationController {
                 username.getText(),
                 email.getText(),
                 birthday.getValue(),
-                password
+                password,
+                hidden.isSelected()
         ));
 
         registration.setAppView(AppView.getByController(Accounts.class));

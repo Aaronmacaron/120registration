@@ -24,6 +24,12 @@
             <ListView prefHeight="200.0" prefWidth="200.0" fx:id="accountList" onMouseClicked="#handleOnListClicked" />
                 <HBox alignment="CENTER_RIGHT">
                     <children>
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Ausgeblendete Accounts anzeigen/ausblenden"
+                                onAction="#handleToggleHiddenAccountButtonClicked">
+                            <HBox.margin>
+                                <Insets right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
                         <Button alignment="CENTER" mnemonicParsing="false" text="Zur Registrierung"
                                 onAction="#handleRegisterButtonClicked">
                             <HBox.margin>

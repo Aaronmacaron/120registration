@@ -16,7 +16,7 @@ public class Accounts implements RegistrationController {
 
     @Override
     public void loaded() {
-        accountList.setItems(registration.getAccounts());
+        accountList.setItems(registration.getProcessedAccounts());
     }
 
     @Override
@@ -41,7 +41,14 @@ public class Accounts implements RegistrationController {
 
     public void handleOnListClicked(MouseEvent mouseEvent) {
         Account selectedAccount = accountList.getSelectionModel().getSelectedItem();
+        if (selectedAccount == null) {
+            return;
+        }
         registration.setActiveAccountIndex(registration.getAccounts().indexOf(selectedAccount));
         registration.setAppView(AppView.getByController(AccountDetails.class));
+    }
+
+    public void handleToggleHiddenAccountButtonClicked(ActionEvent actionEvent) {
+        registration.toggleHiddenAccounts();
     }
 }

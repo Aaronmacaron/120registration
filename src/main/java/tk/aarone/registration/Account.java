@@ -10,13 +10,15 @@ public class Account {
     private String email;
     private LocalDate birthday;
     private String passwordHash;
+    private boolean hidden;
 
     public Account(String username, String email, LocalDate birthday,
-                   String passwordHash) {
+                   String passwordHash, boolean hidden) {
         this.username = username;
         this.email = email;
         this.birthday = birthday;
         this.passwordHash = passwordHash;
+        this.hidden = hidden;
     }
 
     public Reaction authenticate(String password) {
@@ -41,6 +43,10 @@ public class Account {
 
     public String getPasswordHash() {
         return passwordHash;
+    }
+
+    public boolean isHidden() {
+        return hidden;
     }
 
     @Override
