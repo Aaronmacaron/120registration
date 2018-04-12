@@ -8,17 +8,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import org.mindrot.jbcrypt.BCrypt;
-import tk.aarone.registration.Account;
-import tk.aarone.registration.AppView;
-import tk.aarone.registration.Registration;
-import tk.aarone.registration.RegistrationController;
+import tk.aarone.registration.*;
+import tk.aarone.registration.Reaction.Reaction;
+
+import java.util.stream.Stream;
 
 public class AccountDetails implements RegistrationController {
 
     private Registration registration;
 
-    private static final String PASSWORD_PLACEHOLDER = "\ue000\ue000\ue000"; /* Use Unicode private use are chars to
-    make sure that the user doesn't choose the password placeholder as his new password by hazard.*/
+    /* Use Unicode private use are chars to make sure that the user doesn't choose the password placeholder as his new
+    password by hazard.*/
+    private static final String PASSWORD_PLACEHOLDER = new String(new char[8]).replace("\0", "\ue000");
 
     @FXML private VBox formContainer;
     @FXML private Label errorMessage;
@@ -44,6 +45,19 @@ public class AccountDetails implements RegistrationController {
         hidden.setSelected(activeAccount.isHidden());
     }
 
+    private Reaction validate() {
+        final Stream<Reaction> reactions = Stream.of(
+                Validator.validatePassword(password.getText(), password.getText()),
+                Validator.validateUsername(username.getText(), registration.getAccounts().stream()),
+                Validator.validateEmail(email.getText(), registration.getAccounts().stream()),
+                Validator.validateBirthday(birthday.getValue())
+        );
+
+        return reactions.filter(Reaction::isFailure)
+                .findFirst()
+                .orElseGet(Reaction::success);
+    }
+
     @Override
     public void setRegistration(Registration registration) {
         this.registration = registration;
@@ -59,6 +73,7 @@ public class AccountDetails implements RegistrationController {
     }
 
     public void handleSaveButtonClicked(ActionEvent actionEvent) {
+
         String passwordValue = password.getText();
         String password;
         if (passwordValue.equals(PASSWORD_PLACEHOLDER)) { // Password didn't change
@@ -67,15 +82,20 @@ public class AccountDetails implements RegistrationController {
             password = BCrypt.hashpw(passwordValue, BCrypt.gensalt());
         }
 
-        registration.getAccounts().set(registration.getActiveAccountIndex(), new Account(
-                username.getText(),
-                email.getText(),
-                birthday.getValue(),
-                password,
-                hidden.isSelected()
-        ));
+        validate().succeed(reaction -> {
 
-        registration.setAppView(AppView.getByController(Accounts.class));
+            registration.getAccounts().set(registration.getActiveAccountIndex(), new Account(
+                    username.getText(),
+                    email.getText(),
+                    birthday.getValue(),
+                    password,
+                    hidden.isSelected()
+            ));
+
+            registration.setAppView(AppView.getByController(Accounts.class));
+        })
+                .fail(reaction -> errorMessage.setText(reaction.getMessage()))
+                .resolve(reaction -> errorMessage.setText(reaction.getMessage()));
     }
 
     private void goBackToAccountsScene() {
