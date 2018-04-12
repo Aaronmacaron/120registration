@@ -11,6 +11,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import tk.aarone.registration.*;
 import tk.aarone.registration.Reaction.Reaction;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class AccountDetails implements RegistrationController {
@@ -46,10 +48,17 @@ public class AccountDetails implements RegistrationController {
     }
 
     private Reaction validate() {
+        List<Account> newAccountList = new ArrayList<>();
+        for (int i = 0; i < registration.getAccounts().size(); i++) {
+            if (i != registration.getActiveAccountIndex()) {
+                newAccountList.add(registration.getAccounts().get(i));
+            }
+        }
+
         final Stream<Reaction> reactions = Stream.of(
                 Validator.validatePassword(password.getText(), password.getText()),
-                Validator.validateUsername(username.getText(), registration.getAccounts().stream()),
-                Validator.validateEmail(email.getText(), registration.getAccounts().stream()),
+                Validator.validateUsername(username.getText(), newAccountList.stream()),
+                Validator.validateEmail(email.getText(), newAccountList.stream()),
                 Validator.validateBirthday(birthday.getValue())
         );
 
